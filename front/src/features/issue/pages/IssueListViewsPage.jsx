@@ -9,5 +9,6 @@ export function IssueListViewsPage() {
 	);
 }
 const StyledWrapper = styled.div`
-	padding: 0;
+	width: 1280px;
+	margin: 30px auto 0;
 `;
