@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Logo } from '../../../@common/Logo';
-import { Button } from '../../../@common/Button';
+import { Logo } from '../../../common/Logo';
+import { Button } from '../../../common/components/Button';
 import { Input } from 'antd';
 
 export function SignContainer() {
@@ -18,6 +18,7 @@ export function SignContainer() {
 		</StyledWrapper>
 	);
 }
+// TODO: 스타일 수정, 버튼 theme 만들기
 const StyledWrapper = styled.div`
 	width: 342px;
 	b {
