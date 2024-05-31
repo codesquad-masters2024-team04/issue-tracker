@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - dev-be
+
+jobs:
+  Deploy-Job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH를 통해 EC2 접속
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          APPLICATION_PROPERTIES: ${{ secrets.APPLICATION_PROPERTIES }}
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          envs: APPLICATION_PROPERTIES
+          script_stop: true
+          script: |
+            cd /home/ubuntu/issue-tracker/back
+            rm -rf src/main/resources/application.properties
+            git pull origin dev-be
+            mkdir -p src/main/resources
+            echo "$APPLICATION_PROPERTIES" > src/main/resources/application.properties
+            ./gradlew clean build
+            sudo fuser -k -n tcp 8080 || true
+            nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
