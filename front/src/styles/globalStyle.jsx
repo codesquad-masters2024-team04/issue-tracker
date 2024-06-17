@@ -50,7 +50,7 @@ Remove the margin in all browsers.
   */
 
   body {
-    font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, 맑은 고딕, Malgun Gothic,
+     font-family: Pretendard, "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, 맑은 고딕, Malgun Gothic,
       Apple SD 산돌고딕 Neo, Apple SD Gothic Neo, Segoe UI, Roboto, Helvetica,
       Arial, sans-serif;
       background-color: #F9F9F9;
@@ -168,9 +168,14 @@ Remove the margin in all browsers.
     margin: 0; /* 2 */
     font-size: 100%; /* 1 */
     font-family: inherit; /* 1 */
-    line-height: 1.2; /* 1 */
+    // line-height: 1.2; /* 1 */
   }
-
+  textarea:focus {
+    background-color: #fff;
+  }
+  textarea {
+    background-color: #EFF0F6;
+  }
   /**
   Remove the inheritance of text transform in Edge and Firefox.
   1. Remove the inheritance of text transform in Firefox.
@@ -491,5 +496,9 @@ Remove the margin in all browsers.
   select {
     background-color: transparent;
     border: 0px;
+  }
+  .right-align {
+    display: flex;
+    justify-content: flex-end;
   }
   `;

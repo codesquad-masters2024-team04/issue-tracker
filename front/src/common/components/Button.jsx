@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/theme';
+import { theme } from '~/styles/theme';
 
 export function Button({
-	children,
 	className,
-	type,
-	size = 'small',
-	buttonType = 'container',
-	disabled = false,
+	type, // button, submit, reset
+	size = 'small', // small, medium, large
+	buttonType = 'container', // container, outline, ghost
+	disabled,
+	icon = null, //ReactNode
 	onClick,
+	onSubmit,
+	buttonText,
 }) {
 	return (
 		<StyledAntdButton
@@ -18,16 +20,23 @@ export function Button({
 			$buttonType={buttonType}
 			disabled={disabled}
 			onClick={onClick}
+			onSubmit={onSubmit}
 		>
-			{children}
+			{icon && icon}
+			{buttonText}
 		</StyledAntdButton>
 	);
 }
 
 const StyledAntdButton = styled.button`
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	${props => theme.buttonSizes[props.$size]}
 	${props => theme.buttonStyles[props.$buttonType]}
+	&:disabled {
+		cursor: not-allowed;
+	}
 `;
 
 {

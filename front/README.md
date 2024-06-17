@@ -26,3 +26,8 @@
     /label
     /milestone
 ```
+
+## 배포
+
+- AWS S3에 배포합니다
+- [배포 링크](http://issue-tracker-front.s3-website.ap-northeast-2.amazonaws.com/)

@@ -6,12 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+TODO.md
+public
 node_modules
 dist
+build
 dist-ssr
 *.local
-
+.env
+.env.production
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

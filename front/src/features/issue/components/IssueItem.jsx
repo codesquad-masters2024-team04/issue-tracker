@@ -1,48 +1,67 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Checkbox } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { IconUser } from '../../../common/icons/IconUser';
-import { IconLandmark } from '../../../common/icons/IconLandmark';
-export function IssueItem() {
+import { IconMilestone, IconArchive } from '~/common/icons';
+import { CheckBox, Label } from '~/common/components';
+
+export function IssueItem({ issue, onChange, checked, profileImage }) {
 	return (
 		<StyledWrapper>
-			<StyledInner>
-				<StyledCheckbox />
-				<StyledFlex>
-					<ExclamationCircleOutlined />
-					<StyledIssueTitle to='/'>이슈제목</StyledIssueTitle>
+			<StyledCheckbox
+				name='issue'
+				value={issue?.id}
+				checked={checked.includes(issue?.id)}
+				onChange={onChange}
+			/>
+			<StyledFlex>
+				{issue?.closed ? (
+					<IconArchive style={{ color: '#6E7191' }} />
+				) : (
+					<ExclamationCircleOutlined style={{ color: '#007AFF' }} />
+				)}
+				<StyledIssueTitle to={`/issues/${issue?.id}`}>
+					{issue?.title}
+				</StyledIssueTitle>
 
-					<strong>documentaion</strong>
-				</StyledFlex>
-				<StyledDetail>
-					<p>이슈번호</p>
-					<StyledAuthour>작성자 및 타임스탬프</StyledAuthour>
+				{issue?.labels.map(label => (
+					<Label
+						key={label.id}
+						name={label.name}
+						backgroundColor={label.backgroundColor}
+						textColor={label.textColor}
+					/>
+				))}
+			</StyledFlex>
+			<StyledDetail>
+				<p>#{issue?.id}</p>
+				<StyledAuthour>
+					이 이슈가 {issue?.duration} 전, {issue?.writer}님에 의해
+					작성되었습니다.
+				</StyledAuthour>
+				{issue?.milestone?.name && (
 					<StyledMilestone>
-						<IconLandmark />
-						<p>그룹프로젝트:이슈트래커</p>
+						<IconMilestone />
+						<p>{issue?.milestone?.name}</p>
 					</StyledMilestone>
-				</StyledDetail>
-
-				<StyledIconUser />
-			</StyledInner>
+				)}
+			</StyledDetail>
+			<StyledUserImage src={profileImage} />
 		</StyledWrapper>
 	);
 }
 const StyledWrapper = styled.div`
-	padding: 0;
-`;
-const StyledInner = styled.div`
 	display: block;
-	border-bottom: 1px solid #d9dbe9;
+	border-bottom: 1px solid ${({ theme }) => theme.color.neutral.border.default};
 	width: 100%;
 	position: relative;
 	padding: 16px 54px 16px 80px;
 	&:last-child {
 		border-bottom: 0;
 	}
+	background: ${({ theme }) => theme.color.neutral.surface.strong};
 `;
-const StyledCheckbox = styled(Checkbox)`
+
+const StyledCheckbox = styled(CheckBox)`
 	position: absolute;
 	top: 50%;
 	left: 32px;
@@ -53,9 +72,8 @@ const StyledFlex = styled.div`
 	align-items: center;
 	margin-bottom: 8px;
 	span {
-		color: #007aff;
+		color: ${({ theme }) => theme.color.brand.text.weak};
 	}
-
 	strong {
 		height: 24px;
 		font-weight: 500;
@@ -75,28 +93,25 @@ const StyledDetail = styled.div`
 	display: flex;
 	align-items: center;
 	p {
-		font-size: 16px;
-		color: #6e7191;
+		${({ theme }) => theme.typography.medium[16]}
+		color: ${({ theme }) => theme.color.neutral.text.weak};
 	}
 `;
 const StyledAuthour = styled.p`
 	margin: 0 16px;
 `;
-const StyledIconUser = styled(IconUser)`
+const StyledUserImage = styled.img`
 	width: 20px;
 	height: 20px;
 	position: absolute;
 	top: 50%;
 	right: 54px;
 	transform: translateY(-50%);
+	border-radius: 50%;
 `;
 const StyledMilestone = styled.div`
 	display: flex;
+	gap: 8px;
 	align-items: center;
-	div {
-		width: 16px;
-		height: 16px;
-		color: #6e7191;
-		margin-right: 8px;
-	}
+	color: ${({ theme }) => theme.color.neutral.text.weak};
 `;

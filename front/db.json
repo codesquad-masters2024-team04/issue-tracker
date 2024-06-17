@@ -1,0 +1,61 @@
+{
+	"issue": [
+		{
+			"id": 1,
+			"title": "title1",
+			"content": "content1",
+			"profileImage": "https://avatars.githubusercontent.com/u/58014235?v=4",
+			"milestoneId": "m1",
+			"labelId": "bug",
+			"manager": "JK",
+			"writer": "jin",
+			"createTime": "2024-05-10T01:40:23.229352603",
+			"deleted": false
+		},
+		{
+			"id": 2,
+			"title": "title2",
+			"content": "content2",
+			"profileImage": "https://avatars.githubusercontent.com/u/58014235?v=4",
+			"milestoneId": "m2",
+			"labelId": "documentation",
+			"manager": "JK",
+			"writer": "daniel",
+			"createTime": "2024-05-10T01:40:23.232974483",
+			"deleted": true
+		}
+	],
+	"detail": [
+		{
+			"id": 1,
+			"title": "title1",
+			"content": "my name is daniel",
+			"milestoneId": "m1",
+			"assignees": [
+				{
+					"loginId": "mellisa",
+					"profileImage": "https://avatars.githubusercontent.com/u/140429591?s=40&v=4"
+				},
+				{
+					"loginId": "wade",
+					"profileImage": "https://avatars.githubusercontent.com/u/126778700?s=40&v=4"
+				}
+			],
+			"writer": "daniel",
+			"createTime": "2024-05-14T09:41:22.1253905",
+			"labels": [
+				{
+					"name": "bug",
+					"description": "bug",
+					"color": "#0075CA"
+				},
+				{
+					"name": "documentation",
+					"description": "documentation",
+					"color": "#008672"
+				}
+			],
+			"closed": false
+		}
+	]
+}

@@ -94,27 +94,27 @@ const typography = {
 		32: `
             font-size: 32px;
             line-height: 48px;
-            font-weight: 700;
+            font-weight: 500;
         `,
 		24: `
             font-size: 24px;
             line-height: 36px;
-            font-weight: 700;
+            font-weight: 500;
         `,
 		20: `
             font-size: 20px;
             line-height: 32px;
-            font-weight: 700;
+            font-weight: 500;
         `,
 		16: `
             font-size: 16px;
             line-height: 24px;
-            font-weight: 700;
+            font-weight: 500;
         `,
 		12: `
             font-size: 12px;
             line-height: 16px;
-            font-weight: 700;
+            font-weight: 500;
         `,
 	},
 };
@@ -141,17 +141,24 @@ const buttonSizes = {
 	small: `
     border-radius: ${radius.medium};
     padding: 12px 0;
+	min-width: 128px;
+	height: 40px;
     ${typography.medium[12]}
   `,
 	medium: `
     border-radius: ${radius.medium};
     font-size: 16px;
+	// min-width: 160px;
+	height: 48px;
     padding: 12px 0;
     ${typography.medium[16]}
   `,
 	large: `
     border-radius: ${radius.medium};
     padding: 12px 0;
+	min-width: 240px;
+	height: 56px;
+
     
     ${typography.medium[20]}
   `,
